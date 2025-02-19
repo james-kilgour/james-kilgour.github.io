@@ -29,11 +29,13 @@ body {
 
 *Public Health Scotland 2024, Present*
 
-- Lead author on a 35-page report on clinical risk, service utilisation and demography across diabetes patients in Dumfries and Galloway with statistical disclosure methods applied. Built a logistic regression model to impute appointment data. Cross validation results showed 66% accuracy with McFadden’s pseudo R^2^ = 0.22.
+Statistician within LIST, PHS's regional analyst service for primary care clinicians and local councils. Notable projects include:
 
-- Co-delivered a dimensionality reduction and clustering analysis on health and social care usage among learning disability patients in North Ayr, recently exhibited at the NRS Mental Health Annual Scientific Meeting.
+- Regression modelling to impute patient appointment data. 66% accuracy with McFadden’s pseudo R^2^ = 0.22.
 
-- Supported an audit of a patient transfer services delivered by the Red Cross and its effects on hospital re-admission rates.
+- PCA and clustering analysis on learning disability patients (recently exhibited at the NRS Mental Health Annual Scientific Meeting).
+
+- Holt-Winters exponential forecasting of bed capacity.
 
 - See work GitHub account [here](github.com/jamesk-PHS).
 
