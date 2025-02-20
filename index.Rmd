@@ -35,7 +35,7 @@ Statistician within LIST, PHS's regional analyst service for primary care clinic
 
 - PCA and clustering analysis on learning disability patients (recently exhibited at the NRS Mental Health Annual Scientific Meeting).
 
-- Holt-Winters exponential forecasting of bed capacity.
+- Forecasting hospital bed capacity using SES models.
 
 - See work GitHub account [here](github.com/jamesk-PHS).
 
