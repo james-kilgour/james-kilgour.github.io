@@ -20,7 +20,7 @@ body {
 **I'm James**, I'm a statistician currently working in healthcare analytics and modelling. Before that, I worked in digital marketing but I'm also interested in human factors research, econometrics, polling and urban design.
 
 **You can reach me on:**
-[Email](mailto:james_kilgour@outlook.com)  [LinkedIn](https://www.linkedin.com/in/james-kilgour/)  [GitHub](https://github.com/james-kilgour)
+[Email](mailto:james_kilgour@outlook.com)  [LinkedIn](https://www.linkedin.com/in/james-kilgour/)   [GitHub](https://github.com/james-kilgour)
 
 
 ## Experience {.tabset .tabset-fade .tabset-pills}
@@ -37,7 +37,7 @@ Statistician within LIST, PHS's regional analyst service for primary care clinic
 
 - Forecasting hospital bed capacity using SES models.
 
-- See work GitHub account [here](github.com/jamesk-PHS).
+- See work GitHub account [here](https://github.com/jamesk-PHS).
 
 ### Senior Writer and Analyst
 
