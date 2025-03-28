@@ -105,4 +105,55 @@ Statistician within LIST, PHS's regional analyst service for primary care clinic
 
 ## Data viz examples
 
-Coming soon 👀
+```{r, set up, echo = FALSE, warning = FALSE, message = FALSE}
+# Load packages
+library(tidyverse)
+library(leaflet)
+library(ggalluvial)
+library(patchwork)
+```
+
+### A Sankey chart
+
+Counts of titanic survivors by demographic profile.
+
+```{r}
+p1 <- as_tibble(Titanic) %>%
+  ggplot(aes(axis1 = Class, axis2 = Sex, y = n)) +
+  scale_x_discrete(limits = c("Class", "Sex")) +
+  geom_alluvium(aes(fill = Survived)) +
+  geom_stratum() +
+  geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+  ggthemes::scale_fill_colorblind() +
+  labs(y = "Passenger count")
+
+
+p2 <- as_tibble(Titanic) %>%
+  ggplot(aes(axis1 = Sex, axis2 = Age, y = n)) +
+  scale_x_discrete(limits = c("Sex", "Age")) +
+  geom_alluvium(aes(fill = Survived)) +
+  geom_stratum() +
+  geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+  ggthemes::scale_fill_colorblind() +
+  labs(y = "Passenger count")
+
+p1+p2 + plot_layout(axes = "collect", guides = "collect")
+
+```
+
+### An interactive map in `leaflet`
+
+Use the map below to browse cycle paths in your local area. Map kindly provided Lucas Verney ([Phyks](https://github.com/Phyks) on GitHub) via [CyclOSM](https://github.com/cyclosm) resource.
+
+```{r}
+leaflet() %>% 
+  addProviderTiles("CyclOSM") %>% 
+  setView(lng = -2, lat = 54, zoom = 5.4)
+```
+
+
+
+
+
+
+
