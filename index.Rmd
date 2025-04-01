@@ -115,29 +115,29 @@ library(patchwork)
 
 ### A Sankey chart
 
-Counts of titanic survivors by demographic profile.
+Rankings in prevalence of long term conditions between age cohorts in Scotland. Source: [Disease Prevalence](https://publichealthscotland.scot/publications/general-practice-demographics-data-visualisation/general-practice-demographics-data-visualisation-up-to-31-december-2024/), Public Health Scotland. 
 
-```{r}
-p1 <- as_tibble(Titanic) %>%
-  ggplot(aes(axis1 = Class, axis2 = Sex, y = n)) +
-  scale_x_discrete(limits = c("Class", "Sex")) +
-  geom_alluvium(aes(fill = Survived)) +
-  geom_stratum() +
-  geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
-  ggthemes::scale_fill_colorblind() +
-  labs(y = "Passenger count")
+```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 10}
+source("LTC Sankey charts.R",local = knitr::knit_global())
 
-
-p2 <- as_tibble(Titanic) %>%
-  ggplot(aes(axis1 = Sex, axis2 = Age, y = n)) +
-  scale_x_discrete(limits = c("Sex", "Age")) +
-  geom_alluvium(aes(fill = Survived)) +
-  geom_stratum() +
-  geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
-  ggthemes::scale_fill_colorblind() +
-  labs(y = "Passenger count")
-
-p1+p2 + plot_layout(axes = "collect", guides = "collect")
+disease_data %>% 
+	filter(year == 2022,
+				 age_cohort != "All") %>% 
+	ggplot(aes(x = as.factor(age_cohort),
+						 stratum = as.factor(rank), 
+						 alluvium = disease,
+						 fill = disease)) +
+	geom_flow(stat = "alluvium") +
+	geom_stratum() +
+	geom_text(stat = "alluvium",
+						aes(label = stringr::str_wrap(paste0(rank, " ", disease), 25)), size = 2.5) +
+	labs(x = "Age cohort",
+			 y = "Rank",
+			 fill = "Long-term condition", 
+			 caption = "Source: Disease Prevalence, Public Health Scotland") +
+	theme(axis.ticks.y =  element_blank(),
+	      legend.position="none") +
+	PHS_themes
 
 ```
 
@@ -145,7 +145,7 @@ p1+p2 + plot_layout(axes = "collect", guides = "collect")
 
 Use the map below to browse cycle paths in your local area. Map kindly provided Lucas Verney ([Phyks](https://github.com/Phyks) on GitHub) via [CyclOSM](https://github.com/cyclosm) resource.
 
-```{r}
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
 leaflet() %>% 
   addProviderTiles("CyclOSM") %>% 
   setView(lng = -2, lat = 54, zoom = 5.4)
