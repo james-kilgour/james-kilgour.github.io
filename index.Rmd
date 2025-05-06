@@ -29,13 +29,13 @@ body {
 
 *Public Health Scotland 2024, Present*
 
-Statistician within LIST, PHS's regional analyst service for primary care clinicians and local councils. Notable projects include:
-
-- Regression modelling to impute patient appointment data. 66% accuracy with McFadden’s pseudo R^2^ = 0.22.
+Information Analyst/Statistician under rotating placement, currently in Excellence in Care, a team specialising in nursing/midwifery care standards. Notable past projects include:
 
 - PCA and clustering analysis on learning disability patients (recently exhibited at the NRS Mental Health Annual Scientific Meeting).
 
 - Forecasting hospital bed capacity using SES models.
+
+- [Excellence in Care](https://publichealthscotland.scot/healthcare-system/system-monitoring-accountability-and-quality-of-care/excellence-in-care/overview/) dashboard development and re-design.
 
 - See work GitHub account [here](https://github.com/jamesk-PHS).
 
