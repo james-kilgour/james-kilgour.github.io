@@ -17,7 +17,7 @@ body {
 ```
 # Hi there
 
-**I'm James**, I'm a statistician currently working in healthcare analytics and modelling. Before that, I worked in digital marketing but I'm also interested in human factors research, econometrics, polling and urban design.
+**I'm James**, I'm an experienced analyst, communicator and mentor, currently working in healthcare analytics and modelling. Before that, I worked in digital marketing but I'm also interested in human factors research, econometrics, polling and urban design.
 
 **You can reach me on:**
 [Email](mailto:james_kilgour@outlook.com)  [LinkedIn](https://www.linkedin.com/in/james-kilgour/)   [GitHub](https://github.com/james-kilgour)
@@ -27,35 +27,23 @@ body {
 
 ### Statistician/Information Analyst
 
-*Public Health Scotland 2024, Present*
+*Public Health Scotland, Present*
 
-Information Analyst/Statistician under rotating placement, currently in Excellence in Care, a team specialising in nursing/midwifery care standards. Notable past projects include:
-
-- PCA and clustering analysis on learning disability patients (recently exhibited at the NRS Mental Health Annual Scientific Meeting).
-
-- Forecasting hospital bed capacity using SES models.
-
-- [Excellence in Care](https://publichealthscotland.scot/healthcare-system/system-monitoring-accountability-and-quality-of-care/excellence-in-care/overview/) dashboard development and re-design.
-
+- Exhibited patient clustering analysis at an NHS conference. 
+- Used SES models to forecast bed occupancy in Ayrshire community hospitals. 
+- Built zero-inflated regression models to analyse effect of staffing levels on patient safety. 
+- Made a Leaflet map showing health service accessibility via public/active transport using open data.  
+- Applied linear interpolation and calculus techniques to measure compliance against national care standards.
 - See work GitHub account [here](https://github.com/jamesk-PHS).
 
 ### Senior Writer and Analyst
 
 *CopyHouse, 2021-2024*
 
-- Senior staff member responsible for staff training, client onboarding and strategic consultancy.
-
-- Expanded company services to include data analysis on web traffic and search engine ranking performance.
-
-- Client list spanned financial services and technology sectors, including brands like Facebook, Klarna, Blaylock Van, and Tractable.
-
-### Marketing Assistant and Analyst
-
-*Heriot-Watt University Student Union, 2018-2021*
-
-- Introduced, and subsequently led, an annual audit of our social media audience using follower demographic and engagement data.
-
-- Received a Bronze Award in the Marketing Society’s 2020 Star Awards for our organisational rebrand.
+- Managed and led projects for highest margin accounts. 
+- Onboarded new staff as organisation grew 900% YOY. 
+- Achieved highest satisfaction score in annual client survey.  
+- Expanded company services to include data analysis on web traffic, SEO strategy. 
 
 ## Education {.tabset .tabset-fade .tabset-pills}
 
@@ -63,45 +51,38 @@ Information Analyst/Statistician under rotating placement, currently in Excellen
 
 *University of the Highlands and Islands, Present*
 
-- Studying alongside full-time employment. Data Lab Scholarship recipient. Module specialisms include statistical modelling and geospatial analysis in R.
+- Achieved 78% module average so far with a maximum of 90%. 
+- Data Lab Scholarship recipient. Studying alongside full-time employment.  
+- Module specialisms include statistical modelling, machine learning and geospatial analysis in R/Python. 
 
 ### BSc Data Science (Applied mathematics and statistics)
 
 *The Open University, Paused*
 
-- Studied alongside full-time employment, achieving a 2:1 in my second year. Modules include linear algebra, calculus, statistics and python programming.
+- Studied alongside full-time employment, achieving a 2:1 in my second year. 
+- Modules include linear algebra, calculus, statistics and python programming. 
 
 ### BSc Psychology
 
 *Heriot-Watt University, Graduated with First Class Honours*
 
-- Awarded both the Brotherton Honours Project Prize and Best Speaker title at a British Psychological Society conference for my dissertation/presentation (respectively) on cognitive factors within political messaging campaigns.
+- Awarded Brotherton Project Prize, a departmental award given to the best student Honours project each academic year for my dissertation on cognitive factors within political messaging campaigns.
+- Won Best Speaker at a British Psychological Society conference while exhibiting my research. 
+- Experience in experimental cognitive neuroscience research involving vulnerable demographics.
+
+## Volunteering {.tabset .tabset-fade .tabset-pills}
+
+*Guest speaker on statistics, analysis and R programming*
+
+- Co-delivered professional learning workshops to teachers attending SSERC day courses. 
+- Guest speaker at Forth Valley College on data analysis techniques for HNC projects. 
 
 ## Skills and Software {.tabset .tabset-fade .tabset-pills}
 
-### Statistics
-
-- Data visualisation (ggplot2, Plotly, Excel)
-- Null hypothesis testing & regression analysis
-- Point/interval estimation and power analysis
-- Time-series analysis and forecasting 
-- Multivariate analysis and clustering
-- Information governance, GDPR & statistical disclosure control.
-
-### Programming and Software
-
-- R, tidyverse 
-- Markdown/Bookdown, Flexdashboard, Shiny, Excel
-- SQL, HTML, CSS, Git/GitHub
-- Office 365, Google Workspace
-- Trello, ClickUp, Planner
-
-### General
-
-- Project management within agency environments
-- Finance/procurement and budget optimisation
-- Customer/stakeholder engagement and communication
-- Line management and leadership experience
+- *Statistics:* Data visualisation, multivariate analysis, power analysis, time-series analysis/forecasting, information governance & statistical disclosure control.
+- *Programming:* Proficient in R, SQL, Git and HTML. Experienced in Python, LaTeX. 
+- *Software:* Proficient in R Markdown, GitHub, Excel, QGIS. Experienced in Tableau. 
+- *General:* 5+ years agency and start-up experience, project management, stakeholder engagement. 
 
 ## Data viz examples
 
@@ -111,13 +92,14 @@ library(tidyverse)
 library(leaflet)
 library(ggalluvial)
 library(patchwork)
+library(ggfittext)
 ```
 
 ### A Sankey chart
 
 Rankings in prevalence of long term conditions between age cohorts in Scotland. Source: [Disease Prevalence](https://publichealthscotland.scot/publications/general-practice-demographics-data-visualisation/general-practice-demographics-data-visualisation-up-to-31-december-2024/), Public Health Scotland. 
 
-```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 10}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.width = 10}
 source("LTC Sankey charts.R",local = knitr::knit_global())
 
 disease_data %>% 
@@ -129,8 +111,8 @@ disease_data %>%
 						 fill = disease)) +
 	geom_flow(stat = "alluvium") +
 	geom_stratum() +
-	geom_text(stat = "alluvium",
-						aes(label = stringr::str_wrap(paste0(rank, " ", disease), 25)), size = 2.5) +
+	geom_fit_text(stat = "alluvium",
+						aes(label = stringr::str_wrap(paste0(rank, " ", disease), 25)), size = 5) +
 	labs(x = "Age cohort",
 			 y = "Rank",
 			 fill = "Long-term condition", 
