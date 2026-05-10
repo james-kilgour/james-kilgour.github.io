@@ -100,7 +100,7 @@ library(ggfittext)
 Rankings in prevalence of long term conditions between age cohorts in Scotland. Source: [Disease Prevalence](https://publichealthscotland.scot/publications/general-practice-demographics-data-visualisation/general-practice-demographics-data-visualisation-up-to-31-december-2024/), Public Health Scotland. 
 
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.width = 10}
-source("LTC Sankey charts.R",local = knitr::knit_global())
+source("LTC sankey charts.R")
 
 disease_data %>% 
 	filter(year == 2022,
