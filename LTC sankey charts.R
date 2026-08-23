@@ -19,7 +19,7 @@
 # 1.1 Loading packages/others:
 library(tidyverse)
 library(openxlsx)
-library(flextable)
+#library(flextable)
 library(pals)
 library(patchwork)
 library(alluvial)
