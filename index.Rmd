@@ -42,7 +42,7 @@ body {
 
 - Managed and led projects for highest margin accounts. 
 - Onboarded new staff as organisation grew 900% YOY. 
-- Achieved highest satisfaction score in annual client survey.  
+- Achieved 97% client satisfaction score in annual survey.  
 - Expanded company services to include data analysis on web traffic, SEO strategy. 
 
 ## Education {.tabset .tabset-fade .tabset-pills}
