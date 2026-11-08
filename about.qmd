@@ -1,0 +1,85 @@
+---
+title: "About me"
+image: profile.jpg
+about:
+  id: hero-heading
+  template: solana
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/james-kilgour/
+    - icon: github
+      text: Github
+      href: https://github.com/james-kilgour
+
+---
+
+:::{#hero-heading}
+
+# 👋 Hi there
+
+**I'm James**, I'm an experienced data professional, communicator and mentor, currently working in healthcare analytics and modelling. Before that, I worked in digital marketing but I'm also interested in human factors research, econometrics, polling and urban design.
+
+:::
+
+# Experience 
+
+## Statistician/Information Analyst
+
+*Public Health Scotland, Present*
+
+- Exhibited patient clustering analysis at an NHS conference. 
+- Used SES models to forecast bed occupancy in Ayrshire community hospitals. 
+- Built zero-inflated regression models to analyse effect of staffing levels on patient safety. 
+- Made a Leaflet map showing health service accessibility via public/active transport using open data.  
+- Applied linear interpolation and calculus techniques to measure compliance against national care standards.
+- See work GitHub account [here](https://github.com/jamesk-PHS).
+
+## Senior Writer and Analyst
+
+*CopyHouse, 2021-2024*
+
+- Managed and led projects for highest margin accounts. 
+- Onboarded new staff as organisation grew 900% YOY. 
+- Achieved 97% client satisfaction score in annual survey.  
+- Expanded company services to include data analysis on web traffic, SEO strategy. 
+
+
+# Education 
+
+## MSc Applied Data Analytics
+
+*University of the Highlands and Islands, Present*
+
+- Achieved 78% module average so far with a maximum of 90%. 
+- Data Lab Scholarship recipient. Studying alongside full-time employment.  
+- Module specialisms include statistical modelling, machine learning and geospatial analysis in R/Python. 
+
+## BSc Data Science (Applied mathematics and statistics)
+
+*The Open University, Paused*
+
+- Studied alongside full-time employment, achieving a 2:1 in my second year. 
+- Modules include linear algebra, calculus, statistics and python programming. 
+
+## BSc Psychology
+
+Heriot-Watt University, Graduated with First Class Honours*
+
+- Awarded Brotherton Project Prize, a departmental award given to the best student Honours project each academic year for my dissertation on cognitive factors within political messaging campaigns.
+- Won Best Speaker at a British Psychological Society conference while exhibiting my research. 
+- Experience in experimental cognitive neuroscience research involving vulnerable demographics.
+
+# Volunteering
+
+*Guest speaker on statistics, analysis and R programming*
+
+- Co-delivered professional learning workshops to teachers attending SSERC day courses. 
+- Guest speaker at Forth Valley College on data analysis techniques for HNC projects. 
+
+# Skills and Software
+
+- *Statistics:* Data visualisation, multivariate analysis, power analysis, time-series analysis/forecasting, information governance & statistical disclosure control.
+- *Programming:* Proficient in R, SQL, Git and HTML. Experienced in Python, LaTeX. 
+- *Software:* Proficient in R Markdown, GitHub, Excel, QGIS. Experienced in Tableau. 
+- *General:* 5+ years agency and start-up experience, project management, stakeholder engagement. 

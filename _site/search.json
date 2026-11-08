@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "James Kilgour",
+    "section": "",
+    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nNov 8, 2026\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nNov 5, 2026\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About me",
+    "section": "",
+    "text": "LinkedIn\n  \n  \n    \n     Github\n  \n\n      \n\n\nI’m James, I’m an experienced data professional, communicator and mentor, currently working in healthcare analytics and modelling. Before that, I worked in digital marketing but I’m also interested in human factors research, econometrics, polling and urban design."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About me",
+    "section": "",
+    "text": "Wengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About me",
+    "section": "",
+    "text": "University of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul, MN B.A in Economics | Sept 2007 - June 2011"
+  },
+  {
+    "objectID": "about.html#volunteering",
+    "href": "about.html#volunteering",
+    "title": "About me",
+    "section": "",
+    "text": "Guest speaker on statistics, analysis and R programming\n\nCo-delivered professional learning workshops to teachers attending SSERC day courses.\nGuest speaker at Forth Valley College on data analysis techniques for HNC projects."
+  },
+  {
+    "objectID": "about.html#skills-and-software",
+    "href": "about.html#skills-and-software",
+    "title": "About me",
+    "section": "",
+    "text": "Statistics: Data visualisation, multivariate analysis, power analysis, time-series analysis/forecasting, information governance & statistical disclosure control.\nProgramming: Proficient in R, SQL, Git and HTML. Experienced in Python, LaTeX.\nSoftware: Proficient in R Markdown, GitHub, Excel, QGIS. Experienced in Tableau.\nGeneral: 5+ years agency and start-up experience, project management, stakeholder engagement."
+  },
+  {
+    "objectID": "about.html#education-1",
+    "href": "about.html#education-1",
+    "title": "About me",
+    "section": "",
+    "text": "University of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul, MN B.A in Economics | Sept 2007 - June 2011"
+  },
+  {
+    "objectID": "about.html#experience-1",
+    "href": "about.html#experience-1",
+    "title": "About me",
+    "section": "",
+    "text": "Wengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
+  },
+  {
+    "objectID": "about.html#statisticianinformation-analyst",
+    "href": "about.html#statisticianinformation-analyst",
+    "title": "About me",
+    "section": "Statistician/Information Analyst",
+    "text": "Statistician/Information Analyst\nPublic Health Scotland, Present\n\nExhibited patient clustering analysis at an NHS conference.\nUsed SES models to forecast bed occupancy in Ayrshire community hospitals.\nBuilt zero-inflated regression models to analyse effect of staffing levels on patient safety.\nMade a Leaflet map showing health service accessibility via public/active transport using open data.\n\nApplied linear interpolation and calculus techniques to measure compliance against national care standards.\nSee work GitHub account here."
+  },
+  {
+    "objectID": "about.html#senior-writer-and-analyst",
+    "href": "about.html#senior-writer-and-analyst",
+    "title": "About me",
+    "section": "Senior Writer and Analyst",
+    "text": "Senior Writer and Analyst\nCopyHouse, 2021-2024\n\nManaged and led projects for highest margin accounts.\nOnboarded new staff as organisation grew 900% YOY.\nAchieved 97% client satisfaction score in annual survey.\n\nExpanded company services to include data analysis on web traffic, SEO strategy."
+  },
+  {
+    "objectID": "about.html#msc-applied-data-analytics",
+    "href": "about.html#msc-applied-data-analytics",
+    "title": "About me",
+    "section": "MSc Applied Data Analytics",
+    "text": "MSc Applied Data Analytics\nUniversity of the Highlands and Islands, Present\n\nAchieved 78% module average so far with a maximum of 90%.\nData Lab Scholarship recipient. Studying alongside full-time employment.\n\nModule specialisms include statistical modelling, machine learning and geospatial analysis in R/Python."
+  },
+  {
+    "objectID": "about.html#bsc-data-science-applied-mathematics-and-statistics",
+    "href": "about.html#bsc-data-science-applied-mathematics-and-statistics",
+    "title": "About me",
+    "section": "BSc Data Science (Applied mathematics and statistics)",
+    "text": "BSc Data Science (Applied mathematics and statistics)\nThe Open University, Paused\n\nStudied alongside full-time employment, achieving a 2:1 in my second year.\nModules include linear algebra, calculus, statistics and python programming."
+  },
+  {
+    "objectID": "about.html#bsc-psychology",
+    "href": "about.html#bsc-psychology",
+    "title": "About me",
+    "section": "BSc Psychology",
+    "text": "BSc Psychology\nHeriot-Watt University, Graduated with First Class Honours*\n\nAwarded Brotherton Project Prize, a departmental award given to the best student Honours project each academic year for my dissertation on cognitive factors within political messaging campaigns.\nWon Best Speaker at a British Psychological Society conference while exhibiting my research.\nExperience in experimental cognitive neuroscience research involving vulnerable demographics."
+  }
+]
