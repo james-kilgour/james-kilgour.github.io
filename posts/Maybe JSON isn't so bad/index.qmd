@@ -1,0 +1,10 @@
+---
+title: "Maybe JSON isn't so bad"
+date: "2026-11-08"
+categories: [news]
+draft: true
+---
+
+# Or, the inetivibility of APIs
+
+

@@ -1,0 +1,11 @@
+---
+title: "What am I doing?"
+date: "2026-11-08"
+categories: [news]
+---
+
+I’ve been very lucky to work with, meet and study under some very talented data professionals and academics across Scotland. And, after some minor sleuthing of their GitHubs and LinkedIns, I’ve noticed something: at some point in their career, they start a blog. 
+
+Some are long abandoned with HTML left stale and rotting. Others are active in the form of a weak, irregular pulse of site updates and code snippets. In the hopes of following in their footsteps, I am – quite literally – following in their footsteps with this hastily put together GitHub Pages mini-website. The aim is equal parts showcase and journal of professional milestones, undercooked opinions and code I’ve used across work/personal projects. To that end, I guess the first piece to show off is this very website! 
+
+Working in the R programming and Posit/tidyverse ecosystem for a while now has been very rewarding: I've always had a tech slant to my hobbies and interests but the last year especially has seen my technial proficiency really deepen. I've published dashboards, written software packages, and queried APIs directly when existant packages failed after upstream changes. But what's made it all the easier to adopt those kinds of skills is the combination of the wealth of resources avaiable to people looking to upskill and - something which I think  is unique to R - the shared philosophy of  
