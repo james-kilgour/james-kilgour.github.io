@@ -13,7 +13,7 @@
 <lastBuildDate>Sun, 08 Nov 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>What am I doing?</title>
-  <link>https://your-website-url.example.com/posts/What am I doing?/</link>
+  <link>https://your-website-url.example.com/posts/What am I doing/</link>
   <description><![CDATA[ 
 
 
@@ -380,7 +380,7 @@ font-style: inherit;">BY</span></span>
 
  ]]></description>
   <category>news</category>
-  <guid>https://your-website-url.example.com/posts/What am I doing?/</guid>
+  <guid>https://your-website-url.example.com/posts/What am I doing/</guid>
   <pubDate>Sun, 08 Nov 2026 00:00:00 GMT</pubDate>
 </item>
 </channel>
