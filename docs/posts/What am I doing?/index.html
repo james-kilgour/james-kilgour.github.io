@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -154,11 +189,87 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>I’ve been very lucky to work with, meet and study under some very talented data professionals and academics across Scotland. And, after some minor sleuthing of their GitHubs and LinkedIns, I’ve noticed something: at some point in their career, they start a blog.</p>
-<p>Some are long abandoned with HTML left stale and rotting. Others are active in the form of a weak, irregular pulse of site updates and code snippets. In the hopes of following in their footsteps, I am – quite literally – following in their footsteps with this hastily put together GitHub Pages mini-website. The aim is equal parts showcase and journal of professional milestones, undercooked opinions and code I’ve used across work/personal projects. To that end, I guess the first piece to show off is this very website!</p>
-<p>Working in the R programming and Posit/tidyverse ecosystem for a while now has been very rewarding: I’ve always had a tech slant to my hobbies and interests but the last year especially has seen my technial proficiency really deepen. I’ve published dashboards, written software packages, and queried APIs directly when existant packages failed after upstream changes. But what’s made it all the easier to adopt those kinds of skills is the combination of the wealth of resources avaiable to people looking to upskill and - something which I think is unique to R - the shared philosophy of</p>
+<p>I’ve been lucky to work with, meet and study under some very talented data professionals and academics across Scotland. And, after some minor sleuthing of their GitHubs and LinkedIns, I’ve noticed something: at some point in their career, they start a blog.</p>
+<p>Some are long abandoned with HTML left stale and rotting. Others are active in the form of a weak, irregular pulse of site updates and code snippets. In the hopes of following in their footsteps, I am – quite literally – following in their footsteps with this hastily put together GitHub Pages mini-website. The aim is equal parts showcase and journal of professional milestones, undercooked opinions and code I’ve used across work/personal projects. To that end, I guess the first piece to show off is this website!</p>
+<p>Working in the R/tidyverse space for a while now has been very rewarding: I’ve always had a tech slant to my hobbies and interests but my technical proficiency has really deepened over the last twelve months. One project I’m particularly proud of was a prototype R Shiny dashboard centered on the idea of “streaks” that I finished before summer. It was a completely new way of looking at the data in our programme; shifting away from the monthly reporting of performance data and more towards a focus on long-term - much more difficult to sustain - trends. I ended up re-writing everything in SQL to take advantage of the newly available database access my team had secured and save on local processing at the same time.</p>
+<section id="calculating-performance-streaks-in-sql" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-performance-streaks-in-sql">Calculating performance streaks in SQL</h2>
+<p>The “streaks” calculation has a few parts. It starts by simply setting up the first of four CTEs in SQL, <code>meta_data</code>, a table of reference values for each performance indicator.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>#| eval: <span class="kw">false</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> meta_data <span class="kw">AS</span> (</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="kw">DISTINCT</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        measure_id,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">CAST</span>(reference_point <span class="kw">AS</span> <span class="dt">DECIMAL</span>) <span class="kw">AS</span> ref_point</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> eic.eic_all_data</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> reference_point <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>From here, we query the actual data itself and perform some low-level formatting tweaks to help with reporting later on, creating <code>calculated_data</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>#| eval: <span class="kw">false</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>calculated_data <span class="kw">AS</span> (</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        hb_name,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">TRUNC</span>(measure_date_my, <span class="st">'MM'</span>) <span class="kw">AS</span> measure_date_my,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        sub_location_code,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        measure_id,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">CAST</span>(calc_rate <span class="kw">AS</span> <span class="dt">DECIMAL</span>) <span class="kw">AS</span> calc_rate,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        high_rate_is_better_flag</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> eic.eic_overview</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> hb_name <span class="op">=</span> <span class="st">'", board,"'</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then those two tables get joined (in <code>joined_data</code> no less, points for unorinality?), so we know what certain teams achieved in a given month, how that compared to the national reference value, and a flag variable to help with the counting later on.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>#| eval: <span class="kw">false</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>joined_data <span class="kw">AS</span> (</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        c.<span class="op">*</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        m.ref_point,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">CASE</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">WHEN</span> calc_rate <span class="op">&gt;=</span> ref_point <span class="kw">AND</span> high_rate_is_better_flag <span class="op">=</span> <span class="dv">1</span> <span class="cf">THEN</span> <span class="dv">1</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">WHEN</span> calc_rate <span class="op">&lt;=</span> ref_point <span class="kw">AND</span> high_rate_is_better_flag <span class="op">=</span> <span class="dv">0</span> <span class="cf">THEN</span> <span class="dv">1</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">ELSE</span> <span class="dv">0</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">END</span> <span class="kw">AS</span> success_flag</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> calculated_data c</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span> <span class="kw">JOIN</span> meta_data m</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">ON</span> c.measure_id <span class="op">=</span> m.measure_id</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Turning <code>joined_data</code> into <code>groups</code>, I then go over each team for each health board, and create a new group each time a data point lapses and a streak breaks while keeping the monthly ordering stable so we can accurately identify consistent patterns. It’s a little funny to read, but essentially what this code does is say “starting from 0, count how many zeros are in this team’s whole run”.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>#| eval: <span class="kw">false</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">groups</span> <span class="kw">AS</span> (</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">SUM</span>(<span class="cf">CASE</span> <span class="cf">WHEN</span> success_flag <span class="op">=</span> <span class="dv">0</span> <span class="cf">THEN</span> <span class="dv">1</span> <span class="cf">ELSE</span> <span class="dv">0</span> <span class="cf">END</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">OVER</span> (</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                <span class="kw">PARTITION</span> <span class="kw">BY</span> hb_name, measure_id, sub_location_code</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                <span class="kw">ORDER</span> <span class="kw">BY</span> measure_date_my</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            ) <span class="kw">AS</span> grp</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> joined_data</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Finally, we get the last table output which tallies sequential successes in each group and helps us identify the maximum streak value.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">CASE</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">WHEN</span> success_flag <span class="op">=</span> <span class="dv">1</span> <span class="cf">THEN</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">SUM</span>(success_flag) <span class="kw">OVER</span> (</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">PARTITION</span> <span class="kw">BY</span> hb_name,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                         measure_id,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                         sub_location_code,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                         grp</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="kw">ORDER</span> <span class="kw">BY</span> measure_date_my</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            <span class="kw">ROWS</span> <span class="kw">UNBOUNDED</span> <span class="kw">PRECEDING</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">ELSE</span> <span class="dv">0</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="cf">END</span> <span class="kw">AS</span> success_streak</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> <span class="kw">groups</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    hb_name,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    measure_id,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    sub_location_code,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    measure_date_my</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It was probably my most technically advanced project to date but what made it even more of a milestone was the fact that build an R package <code>eicmethods</code> at the same time thanks, in no small part, to <a href="https://rhian.rbind.io/talks/2026-02-25-rainbowr-pkg/">an amazing guide</a> by Dr Rhian Davies. I kept coming up with ideas for functions we could now use due to the fresh database access, so I would pivot from one R project to another over a few weeks, building both out as I tinkered with features in one or the other.</p>
+<p>Sometimes it’s strange for me to look back and think “this is my job” but as I’ve advanced in my R and statistical skills, I’ve begun delivering intro to data visualisation sessions for professional bodies across Scotland.</p>
+<p>What’s made it all the easier to adopt those kinds of skills is the wealth of upskilling resources available along with the highly prevalent <a href="https://design.tidyverse.org/">tidy design</a> philosophy which makes all the information much more digestible.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
